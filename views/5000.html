@@ -1,0 +1,94 @@
+{{include file="head.html"}}
+
+{{include file="2000.html"}}
+<div class="main-panel">
+
+{{include file="1.html"}}
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header card-header-icon" data-background-color="black">
+						<i class="material-icons">perm_identity</i>
+					</div>
+					<div class="card-content">
+						<h4 class="card-title"> <strong>Personel Ekle</strong> - <small class="category">Personel Bilgilerini Giriniz</small></h4>
+
+						<form id="editForm" method="post" action="{{$URL}}index.php?p=5000&a=2">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group label-floating">
+										<label class="control-label"  for="tc">Tc Kimlik No</label>
+										<input type="text" class="form-control"  name ="d[tc]" maxlength="11" pattern="\d{11}" required id="tc">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group label-floating">
+										<label class="control-label">İsim</label>
+										<input type="text" class="form-control" name ="d[name]" >
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group label-floating">
+										<label class="control-label">Soyisim</label>
+										<input type="text" class="form-control" name ="d[surname]">
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group label-floating">
+										<label class="control-label">SSK No</label>
+										<input type="text" class="form-control" name="d[ssk_no]" >
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group label-floating">
+										<label class="control-label">GSM</label>
+										<input type="text"  pattern="\d{10}" class="form-control" name="d[gsm]" >
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group label-floating">
+										<label class="control-label">Görevi</label>
+										<input  type="search" list="duty_code"  class="form-control" name ="d[duty_id]" >
+											<datalist id="duty_code">
+												{{foreach from=$duty_codes item=item}}
+													<option id="{{$item->id}}" value="{{$item->name}}"> {{$item->name}} </option>	
+												{{/foreach}}
+											</datalist>
+										</input>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">İşe Giriş Tarihi</label>
+										<input type="text" class="form-control datepicker" name ="d[employment_date]" />
+
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group ">
+										<label class="control-label">İşten Ayrılış Tarihi</label>
+										
+										<input  type="dateTime" class="form-control datepicker"  name ="d[employment_end_date]">
+									</div>
+								</div>
+							</div>
+
+
+							<button type="submit" class="btn btn-rose pull-right">Ekle</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>		
+
+		{{include file="footer.html"}}
+
+		{{include file="footer_scripts.html"}}

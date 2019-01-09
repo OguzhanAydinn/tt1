@@ -1,0 +1,96 @@
+<?php /* Smarty version 2.6.30, created on 1546642507
+         compiled from 8000.html */ ?>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "head.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+
+<link href="../tt1/css/sweetalert.css" rel="stylesheet" />
+<body class="off-canvas-sidebar">
+    
+
+    <div class="wrapper wrapper-full-page">
+            <div class="full-page login-page" filter-color="black" data-image="../tt1/img/login.jpg">
+        <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                        <form id="loginForm">
+                            <div class="card card-login card-hidden">
+                                <div class="card-header text-center" data-background-color="orange">
+                                    <h4 class="card-title">Giriş Yapınız</h4>
+                                    
+                                </div>
+                                <div class="card-content">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">face</i>
+                                        </span>
+
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">İsminiz</label>
+                                            <input type="text" class="form-control" id="username" name="username">
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Şifreniz</label>
+                                            <input type="password" class="form-control" id="password"  name="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer text-center">
+                                    <button type="button"  class="btn btn-rose btn-simple btn-wd btn-lg" onclick="Login()">Giriş Yap</button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+    
+
+
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "footer_scripts.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+
+
+
+
+<script>
+    function Login() {
+       var d = [];
+        d[0]=$("#username").val();
+        d[1]=$("#password").val();
+        $.ajax({
+            url: "<?php echo $this->_tpl_vars['URL']; ?>
+index.php?p=8000&d=",
+            data: {d:d},
+            type: "POST",
+            dataType: "json",
+            success: function (result) {
+                swal("Başarılı!", "sdsdsddsı..!", "success")
+                $("#username").val("");
+                $("#password").val("");
+            },
+            error: function (errormessage) {
+                swal("Hata!", "Kullanıcı adı veya şifre hatalı..!", "error")
+            }
+        });
+    }
+</script>
+</html>

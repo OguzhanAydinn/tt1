@@ -1,0 +1,49 @@
+{{include file="head.html"}}
+{{assign var=name_tag value=$ITEM->name_tag}}
+{{assign var=cat_name_tag value=$ITEM->cat_name_tag}}
+{{assign var=cat_seo_tag value=$ITEM->cat_seo_tag}}
+{{assign var=text1_tag value=$ITEM->text1_tag}}
+{{assign var=text2_tag value=$ITEM->text2_tag}}
+{{assign var=text3_tag value=$ITEM->text3_tag}}
+{{assign var=text4_tag value=$ITEM->text4_tag}}
+    <section id="blog" class="container">
+        <div class="blog">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="blog-item">
+                        <img class="img-responsive img-blog" src="{{$ITEM->img_url}}" width="100%" alt="{{$T.$name_tag}}" title="{{$T.$name_tag}}" />
+                            <div class="row"> 
+                                <div class="col-xs-12 col-sm-10 blog-content">
+                                    <h2>{{$T.$name_tag}}</h2>
+                                    <p>{{$T.$text1_tag}}</p>
+                                    <p>{{$T.$text2_tag}}</p>
+                                    <p>{{$T.$text3_tag}}</p>
+                                    <p>{{$T.$text4_tag}}</p>
+                                </div>
+                            </div>
+                        </div><!--/.blog-item-->
+                    </div><!--/.col-md-8-->
+                <aside class="col-md-4">
+    				<div class="widget categories">
+                        <h3>{{$T.$cat_name_tag}}</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+								{{foreach from=$CAT item=item key=key}}
+									{{assign var=name_tag value=$item->name_tag}}
+									{{assign var=seo_tag value=$item->seo_tag}}
+                                <div class="single_comments">
+    								<a href="{{$URL}}{{$T.$seo_tag}}.html"><img src="{{$item->thumb_url}}" alt="{{$T.$name_tag}}"/></a>
+    								<p><a href="{{$URL}}{{$T.$seo_tag}}.html">{{$T.$name_tag}}</a></p>
+                                    
+    							</div>
+								{{/foreach}}
+                            </div>
+                        </div>                     
+                    </div><!--/.recent comments-->
+                </aside>
+            </div><!--/.row-->
+         </div><!--/.blog-->
+    </section><!--/#blog-->
+    {{include file="footer.html"}}
+
+{{include file="footer_scripts.html"}}
